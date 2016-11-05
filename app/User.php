@@ -1,6 +1,6 @@
 <?php
 
-namespace p4;
+namespace P4;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

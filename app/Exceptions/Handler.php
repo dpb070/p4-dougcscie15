@@ -1,6 +1,6 @@
 <?php
 
-namespace p4\Exceptions;
+namespace P4\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

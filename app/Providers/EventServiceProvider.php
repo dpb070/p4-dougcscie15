@@ -1,6 +1,6 @@
 <?php
 
-namespace p4\Providers;
+namespace P4\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'p4\Events\SomeEvent' => [
-            'p4\Listeners\EventListener',
+        'P4\Events\SomeEvent' => [
+            'P4\Listeners\EventListener',
         ],
     ];
 
