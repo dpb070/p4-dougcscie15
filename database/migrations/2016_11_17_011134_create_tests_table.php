@@ -21,9 +21,9 @@ class CreateTestsTable extends Migration
 
       $table->string('name');
       $table->string('units');
-      $table->double('default_low_warning',10,3);
-      $table->double('default_high_warning',10,3);
-      $table->string('comments');
+      $table->double('default_low_warning',10,3)->nullable();
+      $table->double('default_high_warning',10,3)->nullable();
+      $table->string('comments')->nullable();
 
 
     });
