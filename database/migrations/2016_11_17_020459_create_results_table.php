@@ -19,11 +19,11 @@ class CreateResultsTable extends Migration
 
       $table->timestamps();
 
-      $table->integer('test_id');
-      $table->integer('user_id');
+      $table->unsignedInteger('test_id');
+      $table->unsignedInteger('user_id');
       $table->dateTime('result_date');
       $table->double('value',10,3);
-      $table->string('comments');
+      $table->string('comments')->nullable();
     });
   }
 
