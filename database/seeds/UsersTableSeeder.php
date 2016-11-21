@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Jill',
             'email' => 'jill@harvard.edu',
             'password' => 'helloworld',
+            'role' => 'admin'
         ]);
         // Id = 2
         DB::table('users')->insert([
@@ -26,6 +27,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Jamal',
             'email' => 'jamal@harvard.edu',
             'password' => 'helloworld',
+            'role' => 'user'
         ]);
     }
 }

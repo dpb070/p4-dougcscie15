@@ -11,3 +11,5 @@
 |
 */
 Route::get('/', 'MainController@index')->name('main.index');
+Route::get('tests', 'TestController@index')->name('tests.index');
+Route::get('users', 'UserController@index')->name('users.index');
