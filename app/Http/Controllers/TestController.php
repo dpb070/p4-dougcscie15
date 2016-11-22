@@ -11,11 +11,6 @@ class TestController extends Controller
 {
 
     public function index() {
-      $tests = Test::all();
-      if(!$tests->isEmpty()) {
-          foreach($tests as $test) {
-              echo $test->name.'<br>';
-          }
-      }
+          return view('tests.index');
     }
 }
