@@ -52,10 +52,14 @@
             <td>{{ $test->default_high_warning }}</td>
             <td>{{ $test->comments }}</td>
             <td>
-                <button type="button" class="btn btn-danger btn-xs">
+                <button type="button" class="btn btn-danger btn-xs" onclick="window.location='{{ route("users.index") }}'>
                     <span class="fa fa-minus-circle"></span> Delete
                 </button>
             </td>
+            <td>
+                <a href="{{ URL::route('users.index') }}">My button</a>
+            </td>
+
         </tr>
         @endforeach
     </tbody>
