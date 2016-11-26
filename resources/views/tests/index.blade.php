@@ -16,9 +16,9 @@
 @section('pageContentSection')
 
 <div class="control_section">
-    <button type="button" class="btn btn-success btn-sm">
+    <a class="btn btn-success btn-sm" role="button" href="{{ URL::route('users.index') }}">
         <span class="fa fa-plus-circle"></span> New
-    </button>
+    </a>
 </div>
 
 <table class="table-bordered table-striped">
@@ -40,9 +40,9 @@
         @foreach($tests as $test)
         <tr>
             <td>
-                <button type="button" class="btn btn-info btn-xs">
+                <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('users.index') }}">
                     <span class="fa fa-pencil-square-o"></span> Edit
-                </button>
+                </a>
             </td>
             <td>{{ $test->name }}</td>
             <td>{{ $test->units }}</td>
@@ -52,12 +52,9 @@
             <td>{{ $test->default_high_warning }}</td>
             <td>{{ $test->comments }}</td>
             <td>
-                <button type="button" class="btn btn-danger btn-xs" onclick="window.location='{{ route("users.index") }}'>
-                    <span class="fa fa-minus-circle"></span> Delete
-                </button>
-            </td>
-            <td>
-                <a href="{{ URL::route('users.index') }}">My button</a>
+              <a class="btn btn-danger btn-xs" role="button" href="{{ URL::route('users.index') }}">
+                <span class="fa fa-minus-circle"></span> Delete
+              </a>
             </td>
 
         </tr>
