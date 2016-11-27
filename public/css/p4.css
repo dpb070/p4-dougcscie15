@@ -6,7 +6,14 @@ Project 4
 th, td {
     padding: 5px;
 }
+.cancel_section {
+  float: left;
+  clear: right;
+}
+table {clear: left;}
 .control_section {
     padding-top: 1em;
     padding-bottom: 1em;
+    width: 20%;
+    float: left;
 }

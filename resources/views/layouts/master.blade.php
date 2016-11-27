@@ -7,10 +7,10 @@
     <meta charset="UTF-8">
     <title>CSCIE-15 Project 4</title>
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap.override.css" rel="stylesheet">
-    <link href="css/p4.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.override.css" rel="stylesheet">
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">    
+    <link href="/css/p4.css" rel="stylesheet">
 </head>
 <body>
     @yield('navbarSection')

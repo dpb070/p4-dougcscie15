@@ -16,10 +16,22 @@
 @section('pageContentSection')
 
 <div class="control_section">
-    <a class="btn btn-success btn-sm" role="button" href="{{ URL::route('users.index') }}">
-        <span class="fa fa-plus-circle"></span> New
-    </a>
+<form method="POST" action="/tests/{{ $testToDelete->id }}">
+    {{ method_field('DELETE') }}
+    {{ csrf_field() }}
+    Delete {{ $testToDelete->name }}
+    <button type="submit" class="btn btn-info btn-xs">
+        <i class="fa fa-pencil-square-o"></i>Yes
+    </button>
+</form>
 </div>
+
+<div class="cancel_section">
+<a class="btn btn-info btn-xs" role="button" href="{{ URL::route('tests.index') }}">
+    <span class="fa icon-undo"></span>No
+</a>
+</div>
+
 
 <table class="table-bordered table-striped">
     <tbody>
