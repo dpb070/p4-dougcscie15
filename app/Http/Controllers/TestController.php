@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon;
 use P4\Test;
-use Session;
+
 
 class TestController extends Controller
 {
@@ -14,6 +14,20 @@ class TestController extends Controller
     public function index() {
         $tests = Test::all();
           return view('tests.index')->with('tests',$tests);
+    }
+
+    public function create() {
+      return view('tests.create');
+    }
+
+    public function store(Request $request) {
+      $test = new Test();
+      $test->name =  $request->name;
+      $test->units = $request->units;
+
+      $test->save();
+      return redirect('/tests');
+
     }
 
     public function delete($id) {

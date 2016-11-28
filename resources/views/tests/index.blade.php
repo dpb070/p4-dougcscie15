@@ -16,7 +16,7 @@
 @section('pageContentSection')
 
 <div class="control_section">
-    <a class="btn btn-success btn-sm" role="button" href="{{ URL::route('users.index') }}">
+    <a class="btn btn-success btn-xs" role="button" href="{{ URL::route('tests.create') }}">
         <span class="fa fa-plus-circle"></span> New
     </a>
 </div>
