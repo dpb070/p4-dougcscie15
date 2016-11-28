@@ -23,6 +23,11 @@ Route::get('/tests/create', 'TestController@create')->name('tests.create');
 /* Create processing */
 Route::post('/tests', 'TestController@store')->name('tests.store');
 
+/* Edit existing test */
+/* Initialization with form */
+Route::get('/tests/{id}/edit', 'TestController@edit')->name('tests.edit');
+/* Edit processing */
+Route::put('/tests/{id}', 'TestController@update')->name('tests.update');
 
 /* Delete Test */
 /* Intermediate form to confirm delete */
