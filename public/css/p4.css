@@ -3,6 +3,23 @@ Doug Bradley
 CSCIE-15
 Project 4
 */
+
+/* html,body,head attributes implement sticky footer - from Susan's link to
+ http://mystrd.at/modern-clean-css-sticky-footer
+*/
+html {
+    position:relative;
+    min-height:100%;
+}
+body {
+    margin:0 0 50px;
+}
+footer {
+    position: absolute;
+    bottom:0;
+    height:50px;
+    padding:1em;
+}
 th, td {
   padding: 5px;
 }
