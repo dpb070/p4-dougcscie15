@@ -40,7 +40,7 @@
         @foreach($tests as $test)
         <tr>
             <td>
-                <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('users.index') }}">
+                <a class="btn btn-info btn-xs" role="button" href="/tests/{{ $test->id }}/edit">
                     <span class="fa fa-pencil-square-o"></span> Edit
                 </a>
             </td>
