@@ -35,5 +35,25 @@ Route::get('/tests/{id}/delete', 'TestController@delete')->name('tests.destroy')
 /* Delete processing */
 Route::delete('/tests/{id}', 'TestController@destroy')->name('tests.destroy');
 
+/* Users routes */
 
+/* Get all */
 Route::get('users', 'UserController@index')->name('users.index');
+
+/* Create new user */
+/* Initialization with form */
+Route::get('/users/create', 'UserController@create')->name('users.create');
+/* Create processing */
+Route::post('/users', 'UserController@store')->name('users.store');
+
+/* Edit existing user */
+/* Initialization with form */
+Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');
+/* Edit processing */
+Route::put('/users/{id}', 'UserController@update')->name('users.update');
+
+/* Delete User */
+/* Intermediate form to confirm delete */
+Route::get('/users/{id}/delete', 'UserController@delete')->name('users.destroy');
+/* Delete processing */
+Route::delete('/users/{id}', 'UserController@destroy')->name('users.destroy');

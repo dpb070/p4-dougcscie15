@@ -66,12 +66,10 @@ class TestController extends Controller
     /* from Route::delete('/tests/{id}' ...) */
     public function destroy($id)
     {
-        # Get the book to be deleted
         $test = Test::find($id);
 
-        # Then delete the book
         $test->delete();
-        # Finish
+
         return redirect('/tests');
     }
 

@@ -8,7 +8,8 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="#">Tests</a></li>
-            <li><a href="#">Results</a></li>
+            <li><a href="/results">Results</a></li>
+            <li><a href="/users">Users</a></li>
         </ul>
     </div>
 </nav>
