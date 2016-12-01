@@ -1,24 +1,24 @@
 
 @extends('layouts.master')
 @section('navbarSection')
-@include('warningLimitsNavbar')
+@include('includes.warningLimitsNavbar')
 @stop
 @section('pageContentSection')
 
 <div class="control_section">
-  <form method="POST" action="/users/{{ $userToDelete->id }}">
+  <form method="POST" action="/users/{{ $warningLimitToDelete->id }}">
     {{ method_field('DELETE') }}
     {{ csrf_field() }}
     <span class="action_msg">
       Delete
       <span class="imark">
-      "{{ $userToDelete->name }}"
+      "{{ $warningLimitToDelete->id }}"
     </span>
   </span>
   <button type="submit" class="btn btn-info btn-xs">
     <span class="fa fa-check"></span>Yes
   </button>
-  <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('users.index') }}">
+  <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('warninglimits.index') }}">
     <span class="fa fa-rotate-left"></span>No
   </a>
 </form>
@@ -37,19 +37,19 @@
             </tr>
         </thead>
 
-        @foreach($users as $user)
+        @foreach($warningLimits as $warningLimit)
         <tr>
             <td>
-                <a class="btn btn-info btn-xs" role="button" {{ $tableButtonState }} href="/users/{{ $user->id }}/edit">
+                <a class="btn btn-info btn-xs" role="button" {{ $tableButtonState }} href="/warninglimits/{{ $warningLimit->id }}/edit">
                     <span class="fa fa-pencil-square-o"></span> Edit
                 </a>
             </td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->password }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->role }}</td>
+            <td>{{ $warningLimit->name }}</td>
+            <td>{{ $warningLimit->password }}</td>
+            <td>{{ $warningLimit->email }}</td>
+            <td>{{ $warningLimit->role }}</td>
             <td>
-              <a class="btn btn-danger btn-xs" role="button" {{ $tableButtonState }} href="/users/{{ $user->id }}/delete">
+              <a class="btn btn-danger btn-xs" role="button" {{ $tableButtonState }} href="/warninglimits/{{ $warningLimit->id }}/delete">
                 <span class="fa fa-minus-circle"></span> Delete
               </a>
             </td>

@@ -10,6 +10,8 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+/* ========================================================================== */
+/* Default route */
 Route::get('/', 'MainController@index')->name('main.index');
 /* ========================================================================== */
 /* Tests routes */
@@ -72,20 +74,19 @@ Route::delete('/results/{id}', 'ResultController@destroy')->name('results.destro
 /* ========================================================================== */
 /* User Warning Limit routes */
 /* Get all */
-Route::get('userWarnLimits', 'ResultController@index')->name('userWarnLimits.index');
+Route::get('warninglimits', 'WarningLimitController@index')->name('warninglimits.index');
 /* Create new userWarnLimit */
 /* Initialization with form */
-Route::get('/userWarnLimits/create', 'ResultController@create')->name('userWarnLimits.create');
+Route::get('/warninglimits/create', 'WarningLimitController@create')->name('warninglimits.create');
 /* Create processing */
-Route::post('/userWarnLimits', 'ResultController@store')->name('userWarnLimits.store');
+Route::post('/warninglimits', 'WarningLimitController@store')->name('warninglimits.store');
 /* Edit existing userWarnLimit */
 /* Initialization with form */
-Route::get('/userWarnLimits/{id}/edit', 'ResultController@edit')->name('userWarnLimits.edit');
+Route::get('/warninglimits/{id}/edit', 'WarningLimitController@edit')->name('warninglimits.edit');
 /* Edit processing */
-Route::put('/userWarnLimits/{id}', 'ResultController@update')->name('userWarnLimits.update');
+Route::put('/warninglimits/{id}', 'WarningLimitController@update')->name('warninglimits.update');
 /* Delete Result */
 /* Intermediate form to confirm delete */
-Route::get('/userWarnLimits/{id}/delete', 'ResultController@delete')->name('userWarnLimits.destroy');
+Route::get('/warninglimits/{id}/delete', 'WarningLimitController@delete')->name('warninglimits.destroy');
 /* Delete processing */
-Route::delete('/userWarnLimits/{id}', 'ResultController@destroy')->name('userWarnLimits.destroy');
-
+Route::delete('/warninglimits/{id}', 'WarningLimitController@destroy')->name('warninglimits.destroy');

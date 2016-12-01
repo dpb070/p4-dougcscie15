@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 @section('navbarSection')
-@include('usersNavbar')
+@include('includes.usersNavbar')
 @stop
 @section('pageContentSection')
 
