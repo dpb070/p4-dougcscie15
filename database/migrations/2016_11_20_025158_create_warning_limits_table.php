@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserWarningLimitsTable extends Migration
+class CreateWarningLimitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateUserWarningLimitsTable extends Migration
      */
     public function up()
     {
-      Schema::create('user_warning_limits', function (Blueprint $table) {
+      Schema::create('warning_limits', function (Blueprint $table) {
 
         $table->increments('id');
 
@@ -35,6 +35,6 @@ class CreateUserWarningLimitsTable extends Migration
      */
     public function down()
     {
-    Schema::drop('user_warning_limits');
+    Schema::drop('warning_limits');
     }
 }
