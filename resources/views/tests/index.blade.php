@@ -1,18 +1,7 @@
 
 @extends('layouts.master')
 @section('navbarSection')
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header navbar-brand">
-            HealthTrack
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Tests</a></li>
-            <li><a href="/results">Results</a></li>
-            <li><a href="/users">Users</a></li>
-        </ul>
-    </div>
-</nav>
+@include('testsNavbar')
 @stop
 @section('pageContentSection')
 
