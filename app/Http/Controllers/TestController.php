@@ -13,7 +13,8 @@ class TestController extends Controller
     /* from Route::get('tests' ...)*/
     public function index() {
         $tests = Test::all();
-          return view('tests.index')->with('tests',$tests);
+          return view('tests.index')->with('tests',$tests)
+                                    ->with('tableButtonState','enabled');
     }
 
     /* From Route::get('/tests/create' ...) */
@@ -60,7 +61,9 @@ class TestController extends Controller
     public function delete($id) {
       $tests = Test::all();
         $testToDelete = Test::find($id);
-        return view('tests.delete')->with('testToDelete', $testToDelete)->with('tests',$tests);
+        return view('tests.delete')->with('testToDelete', $testToDelete)
+                                    ->with('tests',$tests)
+                                    ->with('tableButtonState','disabled');
     }
 
     /* from Route::delete('/tests/{id}' ...) */

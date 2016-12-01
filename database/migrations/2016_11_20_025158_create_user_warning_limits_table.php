@@ -23,7 +23,6 @@ class CreateUserWarningLimitsTable extends Migration
         $table->unsignedInteger('user_id');
         $table->double('low_warning',10,3)->nullable();
         $table->double('high_warning',10,3)->nullable();
-        $table->string('comments')->nullable();
 
 
       });

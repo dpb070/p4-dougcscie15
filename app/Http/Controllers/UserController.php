@@ -13,7 +13,8 @@ class UserController extends Controller
     /* from Route::get('users' ...)*/
     public function index() {
         $users = User::all();
-          return view('users.index')->with('users',$users);
+          return view('users.index')->with('users',$users)
+                                    ->with('tableButtonState','enabled');
     }
 
     /* From Route::get('/users/create' ...) */
@@ -25,12 +26,12 @@ class UserController extends Controller
     public function store(Request $request) {
       $user = new User();
       $user->name =  $request->name;
-      $user->units = $request->units;
-      $user->validation_low_limit = $request->validation_low_limit;
-      $user->validation_high_limit = $request->validation_high_limit;
-      $user->default_low_warning = $request->default_low_warning;
-      $user->default_high_warning = $request->default_high_warning;
-      $user->comments = $request->comments;
+      $user->email = $request->email;
+      $user->password = $request->password;
+      $user->role = $request->role;
+      $user->remember_token= $request->remember_token;
+      $user->created_at = $request->created_at;
+      $user->updated_at = $request->updated_at;
       $user->save();
       return redirect('/users');
 
@@ -46,12 +47,12 @@ class UserController extends Controller
     public function update(Request $request) {
       $user = User::find($request->id);
       $user->name =  $request->name;
-      $user->units = $request->units;
-      $user->validation_low_limit = $request->validation_low_limit;
-      $user->validation_high_limit = $request->validation_high_limit;
-      $user->default_low_warning = $request->default_low_warning;
-      $user->default_high_warning = $request->default_high_warning;
-      $user->comments = $request->comments;
+      $user->email = $request->email;
+      $user->password = $request->password;
+      $user->role = $request->role;
+      $user->remember_token= $request->remember_token;
+      $user->created_at = $request->created_at;
+      $user->updated_at = $request->updated_at;
       $user->save();
       return redirect('/users');
     }
@@ -60,7 +61,9 @@ class UserController extends Controller
     public function delete($id) {
       $users = User::all();
         $userToDelete = User::find($id);
-        return view('users.delete')->with('userToDelete', $userToDelete)->with('users',$users);
+        return view('users.delete')->with('userToDelete', $userToDelete)
+                                    ->with('users',$users)
+                                    ->with('tableButtonState','disabled');
     }
 
     /* from Route::delete('/users/{id}' ...) */

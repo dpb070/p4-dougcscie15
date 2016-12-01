@@ -53,7 +53,7 @@
     @foreach($tests as $test)
     <tr>
       <td>
-        <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('users.index') }}">
+        <a class="btn btn-info btn-xs" role="button" {{ $tableButtonState }} href="{{ URL::route('users.index') }}">
           <span class="fa fa-pencil-square-o"></span> Edit
         </a>
       </td>
@@ -65,7 +65,7 @@
       <td>{{ $test->default_high_warning }}</td>
       <td>{{ $test->comments }}</td>
       <td>
-        <a class="btn btn-danger btn-xs" role="button" href="/tests/{{ $test->id }}/delete">
+        <a class="btn btn-danger btn-xs" role="button" {{ $tableButtonState }} href="/tests/{{ $test->id }}/delete">
           <span class="fa fa-minus-circle"></span> Delete
         </a>
       </td>

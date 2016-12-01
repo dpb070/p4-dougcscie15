@@ -9,7 +9,7 @@
         <ul class="nav navbar-nav">
             <li><a href="/tests">Tests</a></li>
             <li><a href="/results">Results</a></li>
-            <li class="active"><a href="/users">Users</a></li>
+            <li class="active"><a href="/userWarnLimits">Users</a></li>
         </ul>
     </div>
 </nav>
@@ -17,7 +17,7 @@
 @section('pageContentSection')
 
 <div class="control_section">
-    <a class="btn btn-success btn-xs" role="button" href="{{ URL::route('users.create') }}">
+    <a class="btn btn-success btn-xs" role="button" href="{{ URL::route('userWarnLimits.create') }}">
         <span class="fa fa-plus-circle"></span> New
     </a>
 </div>
@@ -35,19 +35,19 @@
             </tr>
         </thead>
 
-        @foreach($users as $user)
+        @foreach($userWarnLimits as $userWarnLimit)
         <tr>
             <td>
-                <a class="btn btn-info btn-xs" role="button" {{ $tableButtonState }} href="/users/{{ $user->id }}/edit">
+                <a class="btn btn-info btn-xs" role="button" {{ $tableButtonState }} href="/userWarnLimits/{{ $userWarnLimit->id }}/edit">
                     <span class="fa fa-pencil-square-o"></span> Edit
                 </a>
             </td>
-            <td>{{ $user->name }}</td>
-            <td>{{ $user->password }}</td>
-            <td>{{ $user->email }}</td>
-            <td>{{ $user->role }}</td>
+            <td>{{ $userWarnLimit->name }}</td>
+            <td>{{ $userWarnLimit->password }}</td>
+            <td>{{ $userWarnLimit->email }}</td>
+            <td>{{ $userWarnLimit->role }}</td>
             <td>
-              <a class="btn btn-danger btn-xs" role="button" {{ $tableButtonState }} href="/users/{{ $user->id }}/delete">
+              <a class="btn btn-danger btn-xs" role="button" {{ $tableButtonState }} href="/userWarnLimits/{{ $userWarnLimit->id }}/delete">
                 <span class="fa fa-minus-circle"></span> Delete
               </a>
             </td>
