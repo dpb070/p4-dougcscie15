@@ -21,6 +21,6 @@
         CSCIE-15
         Project 4
     </footer>
-
+<script src="/js/app.js"></script>
 </body>
 </html>

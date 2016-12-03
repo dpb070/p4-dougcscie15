@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'name' => 'Jill',
             'email' => 'jill@harvard.edu',
-            'password' => 'helloworld',
-            'role' => 'admin'
+            'password' => Hash::make('helloworld'),
+            'role' => 'ADMIN'
         ]);
         // Id = 2
         DB::table('users')->insert([
@@ -26,8 +26,8 @@ class UsersTableSeeder extends Seeder
             'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
             'name' => 'Jamal',
             'email' => 'jamal@harvard.edu',
-            'password' => 'helloworld',
-            'role' => 'user'
+            'password' => Hash::make('helloworld'),
+            'role' => 'USER'
         ]);
     }
 }

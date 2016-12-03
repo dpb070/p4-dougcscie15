@@ -12,7 +12,7 @@
 */
 /* ========================================================================== */
 /* Default route */
-Route::get('/', 'MainController@index')->name('main.index');
+Route::get('/', 'HomeController@index');
 /* ========================================================================== */
 /* Tests routes */
 /* Get all */
