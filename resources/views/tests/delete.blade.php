@@ -5,6 +5,13 @@
 @stop
 @section('pageContentSection')
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Tests</div>
+                <div class="panel-body">
+
 <div class="control_section">
   <form method="POST" action="/tests/{{ $testToDelete->id }}">
     {{ method_field('DELETE') }}
@@ -25,4 +32,10 @@
 </div>
 
 @include('includes.testsTable')
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @stop

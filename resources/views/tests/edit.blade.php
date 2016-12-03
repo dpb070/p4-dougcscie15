@@ -5,6 +5,12 @@
 @stop
 @section('pageContentSection')
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Test</div>
+                <div class="panel-body">
 
 <form method='POST' class="form-horizontal" action='/tests/{{ $test->id }}'>
   {{ csrf_field() }}
@@ -48,5 +54,12 @@
       <input type="text" class="form-control" name="comments" value="{{ old('comments', $test->comments) }}">
     </div>
   </form>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 @stop

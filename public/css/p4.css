@@ -23,20 +23,10 @@ footer {
 th, td {
   padding: 5px;
 }
-table {
-  margin-left: 1em;
-}
 
 /* section following nav bar */
 .control_section {
-  padding-top: 1em;
   padding-bottom: 1em;
-  margin-left: 1em;
-}
-
-.form_container {
-  width: 30%;
-  margin-left: 2em;
 }
 
 /* for marking sections of messages as italicized */
