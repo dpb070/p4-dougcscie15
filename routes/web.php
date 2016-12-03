@@ -90,3 +90,7 @@ Route::put('/warninglimits/{id}', 'WarningLimitController@update')->name('warnin
 Route::get('/warninglimits/{id}/delete', 'WarningLimitController@delete')->name('warninglimits.destroy');
 /* Delete processing */
 Route::delete('/warninglimits/{id}', 'WarningLimitController@destroy')->name('warninglimits.destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
