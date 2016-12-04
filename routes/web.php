@@ -91,6 +91,9 @@ Route::get('/warninglimits/{id}/delete', 'WarningLimitController@delete')->name(
 /* Delete processing */
 Route::delete('/warninglimits/{id}', 'WarningLimitController@destroy')->name('warninglimits.destroy');
 
+/* Added by artisan make:auth */
 Auth::routes();
+/* Added for call via menu */
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index');

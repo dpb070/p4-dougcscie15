@@ -24,9 +24,8 @@ th, td {
   padding: 5px;
 }
 
-/* section following nav bar */
-.control_section {
-  padding-bottom: 1em;
+.panel-title {
+  font-weight: bold;
 }
 
 /* for marking sections of messages as italicized */

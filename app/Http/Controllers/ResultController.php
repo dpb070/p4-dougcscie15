@@ -6,15 +6,24 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon;
 use P4\Result;
+use Auth;
 
 class ResultController extends Controller
 
 {
     /* from Route::get('results' ...)*/
     public function index() {
+        $user = Auth::user();
+        if ($user) {
         $results = Result::all();
-          return view('results.index')->with('results',$results)
-                                    ->with('tableButtonState','enabled');
+          return view('results.index')
+                      ->with('user',$user)
+                      ->with('results',$results)
+                      ->with('tableButtonState','enabled');
+        }
+        else {
+          return redirect('/login');
+        }
     }
 
     /* From Route::get('/results/create' ...) */
