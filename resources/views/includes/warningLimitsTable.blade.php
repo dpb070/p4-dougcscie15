@@ -4,7 +4,6 @@
             <tr>
                 <td> </td>
                 <td>Test ID</td>
-                <td>User ID</td>
                 <td>Low Warning</td>
                 <td>High Warning</td>
             </tr>
@@ -18,7 +17,6 @@
                 </a>
             </td>
             <td>{{ $warningLimit->test_id }}</td>
-            <td>{{ $warningLimit->user_id }}</td>
             <td>{{ $warningLimit->low_warning }}</td>
             <td>{{ $warningLimit->high_warning }}</td>
             <td>

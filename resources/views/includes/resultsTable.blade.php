@@ -4,7 +4,6 @@
       <tr>
         <td> </td>
         <td>Test ID</td>
-        <td>User ID</td>
         <td>Result Date</td>
         <td>Value</td>
         <td>Comments</td>
@@ -20,7 +19,6 @@
         </a>
       </td>
       <td>{{ $result->test_id }}</td>
-      <td>{{ $result->user_id }}</td>
       <td>{{ $result->result_date }}</td>
       <td>{{ $result->value }}</td>
       <td>{{ $result->comments }}</td>

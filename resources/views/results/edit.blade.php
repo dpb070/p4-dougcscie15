@@ -30,10 +30,6 @@
                 <input type="text" class="form-control" name="test_id" value="{{ old('test_id', $result->test_id) }}">
               </div>
               <div class="form-group">
-                <label for="user_id">User ID</label>
-                <input type="text" class="form-control" name="user_id" value="{{ old('user_id', $result->user_id) }}">
-              </div>
-              <div class="form-group">
                 <label for="result_date">Result Date</label>
                 <input type="text" class="form-control" name="result_date" value="{{ old('result_date', $result->result_date) }}">
               </div>

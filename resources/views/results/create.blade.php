@@ -28,10 +28,6 @@
                 <input type="text" class="form-control" name="test_id" placeholder="dropdown here" size="10">
               </div>
               <div class="form-group">
-                <label for="user_id">User ID</label>
-                <input type="text" class="form-control" name="user_id" placeholder="should be autofilled">
-              </div>
-              <div class="form-group">
                 <label for="result_date">Result Date</label>
                 <input type="text" class="form-control" name="result_date" placeholder="cal thing here">
               </div>
