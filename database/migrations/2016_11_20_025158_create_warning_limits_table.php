@@ -19,8 +19,6 @@ class CreateWarningLimitsTable extends Migration
 
         $table->timestamps();
 
-        $table->unsignedInteger('test_id');
-        $table->unsignedInteger('user_id');
         $table->double('low_warning',10,3)->nullable();
         $table->double('high_warning',10,3)->nullable();
 

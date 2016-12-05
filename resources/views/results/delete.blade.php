@@ -19,7 +19,7 @@
               <span class="action_msg">
                 Delete
                 <span class="imark">
-                  "{{ $resultToDelete->id }}"
+                  {{ $resultToDelete->test->name }} {{ $resultToDelete->result_date }}
                 </span>
               </span>
               <button type="submit" class="btn btn-info btn-xs">

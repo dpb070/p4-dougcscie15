@@ -3,7 +3,7 @@
     <thead>
       <tr>
         <td> </td>
-        <td>Test ID</td>
+        <td>Test</td>
         <td>Result Date</td>
         <td>Value</td>
         <td>Comments</td>
@@ -18,7 +18,7 @@
           <span class="fa fa-pencil-square-o"></span> Edit
         </a>
       </td>
-      <td>{{ $result->test_id }}</td>
+      <td>{{ $result->test->name }}</td>
       <td>{{ $result->result_date }}</td>
       <td>{{ $result->value }}</td>
       <td>{{ $result->comments }}</td>

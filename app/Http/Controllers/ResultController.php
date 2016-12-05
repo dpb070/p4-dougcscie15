@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon;
 use P4\Result;
+use P4\Test;
 use Auth;
 
 class ResultController extends Controller
@@ -25,7 +26,9 @@ class ResultController extends Controller
     if (! $user) {
       return redirect('/login');
     }
-    $results = Result::where('user_id', $user->id)
+    // $results = Result::where('user_id', $user->id)
+    $results = Result::with('test')
+      ->where('user_id', $user->id)
       ->get()
       ->sortByDesc('result_date');
     return view('results.index')
@@ -40,8 +43,10 @@ class ResultController extends Controller
     if (! $user) {
       return redirect('/login');
     }
+    $testList = Test::dropDownList();
     return view('results.create')
-      ->with('user',$user);
+      ->with('user',$user)
+      ->with('testList');
   }
 
   /* from Route::post('/results' ...)  */
@@ -99,7 +104,10 @@ class ResultController extends Controller
     if (! $user) {
       return redirect('/login');
     }
-    $results = Result::all();
+    $results = Result::with('test')
+      ->where('user_id', $user->id)
+      ->get()
+      ->sortByDesc('result_date');
     $resultToDelete = Result::find($id);
     return view('results.delete')->with('resultToDelete', $resultToDelete)
       ->with('results',$results)

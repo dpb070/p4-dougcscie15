@@ -26,4 +26,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function results() {
+      return $this->hasMany('P4\Result');
+    }
+
+    public function warningLimit() {
+      return $this->hasMany('P4\WarningLimit');
+    }
 }
