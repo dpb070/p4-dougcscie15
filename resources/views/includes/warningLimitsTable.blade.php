@@ -3,9 +3,10 @@
         <thead>
             <tr>
                 <td> </td>
-                <td>Test ID</td>
+                <td>Test</td>
                 <td>Low Warning</td>
                 <td>High Warning</td>
+                <td> </td>
             </tr>
         </thead>
 
@@ -16,7 +17,7 @@
                     <span class="fa fa-pencil-square-o"></span> Edit
                 </a>
             </td>
-            <td>{{ $warningLimit->test_id }}</td>
+            <td>{{ $warningLimit->test->name }}</td>
             <td>{{ $warningLimit->low_warning }}</td>
             <td>{{ $warningLimit->high_warning }}</td>
             <td>

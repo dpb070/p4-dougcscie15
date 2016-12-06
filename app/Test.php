@@ -19,8 +19,8 @@ class Test extends Model {
     $tests = Test::orderBy('name')->get();
     $testList = [];
     foreach($tests as $test) {
-        $testList[$test->id] = $test->name;
+      $testList[$test->id] = $test->name;
     }
     return $testList;
-}
+  }
 }

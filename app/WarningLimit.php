@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class WarningLimit extends Model
 {
-  public function results() {
-    return $this->hasMany('P4\Result');
+  public function test() {
+    return $this->belongsTo('P4\Test');
   }
 
-  public function warningLimit() {
-    return $this->hasMany('P4\WarningLimit');
+  public function user() {
+    return $this->belongsTo('P4\User');
   }
 }

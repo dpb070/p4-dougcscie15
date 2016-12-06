@@ -22,10 +22,14 @@
                 <span class="fa fa-rotate-left"></span>Cancel
               </a>
             </div>
-            <div class="form_container">
-              <div class="form-group">
-                <label for="test_id">Test ID</label>
-                <input type="text" class="form-control" name="test_id" placeholder="dropdown here" size="10">
+
+            <div class="form-group">
+              <label for="test_id">Test</label>
+              <select name="test_id" class="form-control">
+                @foreach($testList as $test_id => $name)
+                <option value="{{ $test_id }}">{{ $name }}</option>
+                  @endforeach
+                </select>
               </div>
               <div class="form-group">
                 <label for="result_date">Result Date</label>

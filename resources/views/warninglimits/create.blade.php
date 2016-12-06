@@ -24,9 +24,14 @@
             </div>
             <div class="form_container">
               <div class="form-group">
-                <label for="test_id">Test ID</label>
-                <input type="text" class="form-control" name="test_id" placeholder="dropdown here" size="10">
-              </div>
+                <div class="form-group">
+                  <label for="test_id">Test</label>
+                  <select name="test_id" class="form-control">
+                    @foreach($testList as $test_id => $name)
+                    <option value="{{ $test_id }}">{{ $name }}</option>
+                      @endforeach
+                    </select>
+                  </div>
               <div class="form-group">
                 <label for="low_warning">Low Warning</label>
                 <input type="text" class="form-control" name="low_warning" placeholder="flag results below this value">

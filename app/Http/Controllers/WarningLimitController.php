@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon;
 use P4\WarningLimit;
+use P4\Test;
 use Auth;
 
 class WarningLimitController extends Controller
@@ -22,7 +23,8 @@ class WarningLimitController extends Controller
       if (! $user) {
         return redirect('/login');
       }
-        $warningLimits = WarningLimit::where('user_id', $user->id)
+        $warningLimits = WarningLimit::with('test')
+                                    ->where('user_id', $user->id)
                                     ->get();
           return view('warninglimits.index')->with('warningLimits',$warningLimits)
                                     ->with('tableButtonState','enabled')
@@ -35,8 +37,10 @@ class WarningLimitController extends Controller
       if (! $user) {
         return redirect('/login');
       }
+      $testList = Test::dropDownList();
       return view('warninglimits.create')
-            ->with('user',$user);
+        ->with('user',$user)
+        ->with('testList',$testList);
     }
 
     /* from Route::post('/warningLimits' ...)  */
@@ -64,10 +68,12 @@ class WarningLimitController extends Controller
       if (! $user) {
         return redirect('/login');
       }
-       $warningLimit = WarningLimit::find($id);
-        return view('warninglimits.edit')
-              ->with('warningLimit',$warningLimit)
-              ->with('user',$user);
+      $testList = Test::dropDownList();
+      $warningLimit = WarningLimit::find($id);
+      return view('warninglimits.edit')
+        ->with('warningLimit',$warningLimit)
+        ->with('user',$user)
+        ->with('testList',$testList);
     }
 
     /* from  Route::put('/warningLimits/{id}' ...)  */

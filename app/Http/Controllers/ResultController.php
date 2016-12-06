@@ -46,7 +46,7 @@ class ResultController extends Controller
     $testList = Test::dropDownList();
     return view('results.create')
       ->with('user',$user)
-      ->with('testList');
+      ->with('testList',$testList);
   }
 
   /* from Route::post('/results' ...)  */
@@ -75,9 +75,11 @@ class ResultController extends Controller
       return redirect('/login');
     }
     $result = Result::find($id);
+    $testList = Test::dropDownList();
     return view('results.edit')
       ->with('result',$result)
-      ->with('user',$user);
+      ->with('user',$user)
+      ->with('testList',$testList);
   }
 
   /* from  Route::put('/results/{id}' ...)  */

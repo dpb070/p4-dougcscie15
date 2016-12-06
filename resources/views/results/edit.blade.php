@@ -24,11 +24,19 @@
               </a>
             </div>
             <div class="form_container">
+
+              <!-- Using Susan's shorthand one-liner to set selected value  -->
               <div class="form-group">
-                <input name="id" value="{{ $result->id }}" type="hidden">
-                <label for="test_id">Test ID</label>
-                <input type="text" class="form-control" name="test_id" value="{{ old('test_id', $result->test_id) }}">
+                <label for="test_id">Test</label>
+                <select name="test_id" class="form-control">
+                  @foreach($testList as $test_id => $name)
+                  <option value="{{ $test_id }}" {{ ($result->test_id == $test_id) ? "SELECTED" : '' }}>
+                    {{ $name }}
+                  </option>
+                  @endforeach
+                </select>
               </div>
+
               <div class="form-group">
                 <label for="result_date">Result Date</label>
                 <input type="text" class="form-control" name="result_date" value="{{ old('result_date', $result->result_date) }}">
