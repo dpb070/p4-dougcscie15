@@ -40,3 +40,11 @@ color set to Font Awesome btn-danger color
   color: #d9534f;
   font-weight: bold;
 }
+
+/*for optionally displaying form error messages*/
+.error_display {
+	color: red;
+}
+.error_hide {
+	visibility: hidden;
+}
