@@ -17,6 +17,10 @@ use Auth;
 class WarningLimitController extends Controller
 
 {
+    // field validation
+    private $lowWarningRule = 'numeric';
+    private $highWarningRule = 'numeric';
+
     /* from Route::get('warningLimits' ...)*/
     public function index() {
       $user = Auth::user();
@@ -49,6 +53,11 @@ class WarningLimitController extends Controller
       if (! $user) {
         return redirect('/login');
       }
+      $this->validate($request,
+                        ['low_warning' => $this->lowWarningRule,
+                        'high_warning' => $this->highWarningRule
+                        ]
+                      );
       $warningLimit = new WarningLimit();
       $warningLimit->created_at = $request->created_at;
       $warningLimit->updated_at = $request->updated_at;

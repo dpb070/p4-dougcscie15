@@ -3,7 +3,8 @@
 /**
 * Doug Bradley
 * CSCIE-15 Project 4
-* Tests routing
+* controller functions for TESTS model/table processing
+* if user not logged in, functions will return path to login page
 */
 
 namespace P4\Http\Controllers;
@@ -54,22 +55,24 @@ class TestController extends Controller
       return redirect('/login');
     }
 
-    $this->validate($request, ['name' => $this->nameRule,
-                              'units' => $this->unitsRule,
-                              'validation_low_limit' => $this->validationLowLimitRule,
-                              'validation_high_limit' => $this->validationHighLimitRule,
-                              'default_low_warning' => $this->defaultLowWarningRule,
-                              'default_high_warning' => $this->defaultHighWarningRule
-                              ]
+    $this->validate($request,
+                    ['name' => $this->nameRule,
+                     'units' => $this->unitsRule,
+                     'validation_low_limit' => $this->validationLowLimitRule,
+                     'validation_high_limit' => $this->validationHighLimitRule,
+                     'default_low_warning' => $this->defaultLowWarningRule,
+                     'default_high_warning' => $this->defaultHighWarningRule
+                    ]
                     );
 
     $test = new Test();
     $test->name =  $request->name;
     $test->units = $request->units;
-    $test->validation_low_limit = $request->validation_low_limit;
-    $test->validation_high_limit = $request->validation_high_limit;
-    $test->default_low_warning = $request->default_low_warning;
-    $test->default_high_warning = $request->default_high_warning;
+    // nullable columns for doubles need casting to null when empty
+    $test->validation_low_limit = empty($request->validation_low_limit) ? null : $request->validation_low_limit;
+    $test->validation_high_limit = empty($request->validation_high_limit) ? null : $request->validation_high_limit;
+    $test->default_low_warning = empty($request->default_low_warning) ? null : $request->default_low_warning;
+    $test->default_high_warning = empty($request->default_high_warning) ? null : $request->default_high_warning;
     $test->comments = $request->comments;
     $test->save();
     return redirect('/tests');

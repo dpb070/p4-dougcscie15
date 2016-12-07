@@ -33,11 +33,11 @@
                     </select>
                   </div>
               <div class="form-group">
-                <label for="low_warning">Low Warning</label>
+                <label for="low_warning">Low Warning</label> @include('includes.warningLimitsLowWarningError')
                 <input type="text" class="form-control" name="low_warning" placeholder="flag results below this value">
               </div>
               <div class="form-group">
-                <label for="high_warning">High Warning</label>
+                <label for="high_warning">High Warning</label> @include('includes.warningLimitsHighWarningError')
                 <input type="text" class="form-control" name="high_warning" placeholder="flag results above this value">
               </div>
             </form>
