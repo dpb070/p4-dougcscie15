@@ -45,7 +45,10 @@ class TestController extends Controller
     if (! $user) {
       return redirect('/login');
     }
-    return view('tests.create') ->with('user',$user);
+    $test = new Test();
+    return view('tests.create')
+      ->with('user',$user)
+      ->with('test',$test);
   }
 
   /* from Route::post('/tests' ...)  */
@@ -97,6 +100,15 @@ class TestController extends Controller
     if (! $user) {
       return redirect('/login');
     }
+    $this->validate($request,
+                    ['name' => $this->nameRule,
+                     'units' => $this->unitsRule,
+                     'validation_low_limit' => $this->validationLowLimitRule,
+                     'validation_high_limit' => $this->validationHighLimitRule,
+                     'default_low_warning' => $this->defaultLowWarningRule,
+                     'default_high_warning' => $this->defaultHighWarningRule
+                    ]
+                    );
     $test = Test::find($request->id);
     $test->name =  $request->name;
     $test->units = $request->units;

@@ -13,13 +13,13 @@
         <div class="panel-body">
 
           <div class="panel-heading">
-            <form method="POST" action="/users/{{ $warningLimitToDelete->id }}">
+            <form method="POST" action="/warninglimits/{{ $warningLimitToDelete->id }}">
               {{ method_field('DELETE') }}
               {{ csrf_field() }}
               <span class="action_msg">
-                Delete
+                Delete warning limit for
                 <span class="imark">
-                  "{{ $warningLimitToDelete->id }}"
+                  "{{ $warningLimitToDelete->test->name }}"
                 </span>
               </span>
               <button type="submit" class="btn btn-info btn-xs">
@@ -30,7 +30,7 @@
               </a>
             </form>
           </div>
-                    
+
           @include('includes.warningLimitsTable')
         </div>
       </div>

@@ -24,27 +24,9 @@
               </a>
             </div>
             <div class="form_container">
-              <!-- Using Susan's shorthand one-liner to set selected value  -->
-              <div class="form-group">
-                <label for="test_id">Test</label>
-                <select name="test_id" class="form-control">
-                  @foreach($testList as $test_id => $name)
-                  <option value="{{ $test_id }}" {{ ($warningLimit->test_id == $test_id) ? "SELECTED" : '' }}>
-                    {{ $name }}
-                  </option>
-                  @endforeach
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="low_warning">Low Warning</label>
-                <input type="text" class="form-control" name="low_warning" value="{{ old('low_warning', $warningLimit->low_warning) }}">
-              </div>
-              <div class="form-group">
-                <label for="high_warning">High Warning</label>
-                <input type="text" class="form-control" name="high_warning" value="{{ old('high_warning', $warningLimit->high_warning) }}">
-              </div>
-            </form>
-          </div>
+              @include('includes.warningLimitsFormCore')
+            </div>
+          </form>
         </div>
       </div>
     </div>

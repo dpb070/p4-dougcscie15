@@ -19,6 +19,9 @@ use Auth;
 class ResultController extends Controller
 
 {
+  // field validation
+  private $resultDateRule = 'required';
+  private $valueRule = 'required|numeric';
 
   /* from Route::get('results' ...)*/
   public function index() {
@@ -34,7 +37,7 @@ class ResultController extends Controller
     return view('results.index')
       ->with('user',$user)
       ->with('results',$results)
-      ->with('tableButtonState','enabled');
+      ->with('tableButtonsEnabled','true');
   }
 
   /* From Route::get('/results/create' ...) */
@@ -43,10 +46,12 @@ class ResultController extends Controller
     if (! $user) {
       return redirect('/login');
     }
+    $result = new result();
     $testList = Test::dropDownList();
     return view('results.create')
       ->with('user',$user)
-      ->with('testList',$testList);
+      ->with('testList',$testList)
+      ->with('result', $result);
   }
 
   /* from Route::post('/results' ...)  */
@@ -55,11 +60,16 @@ class ResultController extends Controller
     if (! $user) {
       return redirect('/login');
     }
+    $this->validate($request,
+                      ['result_date' => $this->resultDateRule,
+                      'value' => $this->valueRule
+                      ]
+                    );
     $result = new Result();
     $result->test_id =  $request->test_id;
     $result->user_id = $user->id;           //from user object
-    $result->result_date = $request->result_date;
-    $result->value = $request->value;
+    $result->result_date = empty($request->result_date) ? null :  $request->result_date;
+    $result->value = empty($request->value) ? null :  $request->value;
     $result->comments= $request->comments;
     $result->created_at = $request->created_at;
     $result->updated_at = $request->updated_at;
@@ -88,11 +98,16 @@ class ResultController extends Controller
     if (! $user) {
       return redirect('/login');
     }
+    $this->validate($request,
+                      ['result_date' => $this->resultDateRule,
+                      'value' => $this->valueRule
+                      ]
+                    );
     $result = Result::find($request->id);
     $result->test_id =  $request->test_id;
     $result->user_id = $user->id;           //from user object
-    $result->result_date = $request->result_date;
-    $result->value = $request->value;
+    $result->result_date = empty($request->result_date) ? null :  $request->result_date;
+    $result->value = empty($request->value) ? null :  $request->value;
     $result->comments= $request->comments;
     $result->created_at = $request->created_at;
     $result->updated_at = $request->updated_at;
@@ -111,9 +126,10 @@ class ResultController extends Controller
       ->get()
       ->sortByDesc('result_date');
     $resultToDelete = Result::find($id);
-    return view('results.delete')->with('resultToDelete', $resultToDelete)
+    return view('results.delete')
+      ->with('resultToDelete', $resultToDelete)
       ->with('results',$results)
-      ->with('tableButtonState','disabled')
+      ->with('tableButtonsEnabled','false')
       ->with('user',$user);
   }
 

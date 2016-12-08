@@ -24,33 +24,9 @@
               </a>
             </div>
             <div class="form_container">
-
-              <!-- Using Susan's shorthand one-liner to set selected value  -->
-              <div class="form-group">
-                <label for="test_id">Test</label>
-                <select name="test_id" class="form-control">
-                  @foreach($testList as $test_id => $name)
-                  <option value="{{ $test_id }}" {{ ($result->test_id == $test_id) ? "SELECTED" : '' }}>
-                    {{ $name }}
-                  </option>
-                  @endforeach
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="result_date">Result Date</label>
-                <input type="text" class="form-control" name="result_date" value="{{ old('result_date', $result->result_date) }}">
-              </div>
-              <div class="form-group">
-                <label for="value">Value</label>
-                <input type="text" class="form-control" name="value" value="{{ old('value', $result->value) }}">
-              </div>
-              <div class="form-group">
-                <label for="result_date">Comments</label>
-                <input type="text" class="form-control" name="comments" value="{{ old('comments', $result->comments) }}">
-              </div>
-            </form>
-          </div>
+              @include('includes.resultsFormCore')
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -31,7 +31,7 @@ class WarningLimitController extends Controller
                                     ->where('user_id', $user->id)
                                     ->get();
           return view('warninglimits.index')->with('warningLimits',$warningLimits)
-                                    ->with('tableButtonState','enabled')
+                                    ->with('tableButtonsEnabled','true')
                                     ->with('user',$user);
     }
 
@@ -41,10 +41,12 @@ class WarningLimitController extends Controller
       if (! $user) {
         return redirect('/login');
       }
+      $warningLimit = new WarningLimit();
       $testList = Test::dropDownList();
       return view('warninglimits.create')
         ->with('user',$user)
-        ->with('testList',$testList);
+        ->with('testList',$testList)
+        ->with('warningLimit',$warningLimit);
     }
 
     /* from Route::post('/warningLimits' ...)  */
@@ -91,6 +93,11 @@ class WarningLimitController extends Controller
         if (! $user) {
           return redirect('/login');
         }
+        $this->validate($request,
+                          ['low_warning' => $this->lowWarningRule,
+                          'high_warning' => $this->highWarningRule
+                          ]
+                        );
       $warningLimit = WarningLimit::find($request->id);
       $warningLimit->created_at = $request->created_at;
       $warningLimit->updated_at = $request->updated_at;
@@ -110,23 +117,24 @@ class WarningLimitController extends Controller
         return redirect('/login');
       }
       $warningLimits = WarningLimit::all();
-        $warningLimitToDelete = WarningLimit::find($id);
-        return view('warninglimits.delete')->with('warningLimitToDelete', $warningLimitToDelete)
-                                    ->with('warningLimits',$warningLimits)
-                                    ->with('tableButtonState','disabled')
-                                    ->with('user',$user);
+      $warningLimitToDelete = WarningLimit::find($id);
+      return view('warninglimits.delete')
+                  ->with('warningLimitToDelete', $warningLimitToDelete)
+                  ->with('warningLimits',$warningLimits)
+                  ->with('tableButtonsEnabled','false')
+                  ->with('user',$user);
     }
 
     /* from Route::delete('/warningLimits/{id}' ...) */
     public function destroy($id)
     {
-        $warningLimit = WarningLimit::find($id);
-        $user = Auth::user();
-        if (! $user) {
-          return redirect('/login');
-        }
-        $warningLimit->delete();
-        return redirect('/warninglimits');
+      $user = Auth::user();
+      if (! $user) {
+        return redirect('/login');
+      }
+      $warningLimit = WarningLimit::find($id);
+      $warningLimit->delete();
+      return redirect('/warninglimits');
     }
 
 

@@ -23,26 +23,9 @@
               </a>
             </div>
             <div class="form_container">
-              <div class="form-group">
-                <div class="form-group">
-                  <label for="test_id">Test</label>
-                  <select name="test_id" class="form-control">
-                    @foreach($testList as $test_id => $name)
-                    <option value="{{ $test_id }}">{{ $name }}</option>
-                      @endforeach
-                    </select>
-                  </div>
-              <div class="form-group">
-                <label for="low_warning">Low Warning</label> @include('includes.warningLimitsLowWarningError')
-                <input type="text" class="form-control" name="low_warning" placeholder="flag results below this value">
-              </div>
-              <div class="form-group">
-                <label for="high_warning">High Warning</label> @include('includes.warningLimitsHighWarningError')
-                <input type="text" class="form-control" name="high_warning" placeholder="flag results above this value">
-              </div>
-            </form>
-          </div>
-
+              @include('includes.warningLimitsFormCore')
+            </div>
+          </form>
         </div>
       </div>
     </div>

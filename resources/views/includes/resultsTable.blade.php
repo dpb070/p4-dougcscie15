@@ -1,5 +1,4 @@
 <table class="table-bordered table-striped">
-  <tbody>
     <thead>
       <tr>
         <td> </td>
@@ -10,11 +9,11 @@
         <td> </td>
       </tr>
     </thead>
-
+  <tbody>
     @foreach($results as $result)
     <tr>
       <td>
-        <a class="btn btn-info btn-xs" role="button" {{ $tableButtonState }} href="/results/{{ $result->id }}/edit">
+        <a class="btn btn-info btn-xs" role="button" onclick="return {{ $tableButtonsEnabled }}" href="/results/{{ $result->id }}/edit">
           <span class="fa fa-pencil-square-o"></span> Edit
         </a>
       </td>
@@ -23,7 +22,7 @@
       <td>{{ $result->value }}</td>
       <td>{{ $result->comments }}</td>
       <td>
-        <a class="btn btn-danger btn-xs" role="button" {{ $tableButtonState }} href="/results/{{ $result->id }}/delete">
+        <a class="btn btn-danger btn-xs" role="button" onclick="return {{ $tableButtonsEnabled }}" href="/results/{{ $result->id }}/delete">
           <span class="fa fa-minus-circle"></span> Delete
         </a>
       </td>
