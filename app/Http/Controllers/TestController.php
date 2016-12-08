@@ -36,7 +36,7 @@ class TestController extends Controller
     return view('tests.index')
       ->with('user',$user)
       ->with('tests',$tests)
-      ->with('tableButtonState','enabled');
+      ->with('tableButtonsEnabled','true');
   }
 
   /* From Route::get('/tests/create' ...) */
@@ -132,7 +132,7 @@ class TestController extends Controller
     return view('tests.delete')
       ->with('testToDelete', $testToDelete)
       ->with('tests',$tests)
-      ->with('tableButtonState','disabled')
+      ->with('tableButtonsEnabled','false')
       ->with('user',$user);
   }
 
