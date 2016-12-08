@@ -28,5 +28,7 @@ for test results for flagging in the application display
     * chmod -R 777 storage
     * chmod -R 777 bootstrap/cache
   * Database (MySQL)
-    *
     * create database P4
+    * create user p4user identified by p4user
+    * grant all on p4 to p4user
+    
