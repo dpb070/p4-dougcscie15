@@ -4,7 +4,7 @@
   <label for="test_id">Test</label>
   <select id="test_id" name="test_id" class="form-control">
     @foreach($testList as $test_id => $name)
-    <option value="{{ $test_id }}" {{ ($result->test_id == $test_id) ? "SELECTED" : '' }}>
+    <option value="{{ $test_id }}" {{ ( old('result_date', $result->test_id)  == $test_id) ? "SELECTED" : '' }}>
       {{ $name }}
     </option>
     @endforeach

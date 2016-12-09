@@ -5,11 +5,22 @@
 @stop
 @section('pageContentSection')
 
-<div class="control_section">
-    <a class="btn btn-success btn-xs" role="button" href="{{ URL::route('users.create') }}">
-        <span class="fa fa-plus-circle"></span> New
-    </a>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading panel-title">Users</div>
+        <div class="panel-body">
 
-@include('includes.usersTable')
+          <div class="panel-heading">
+            <a class="btn btn-success btn-xs" role="button" href="{{ URL::route('users.create') }}">
+              <span class="fa fa-plus-circle"></span> New
+            </a>
+          </div>
+          @include('includes.usersTable')
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @stop

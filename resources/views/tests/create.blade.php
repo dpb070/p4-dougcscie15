@@ -11,26 +11,23 @@
       <div class="panel panel-default">
         <div class="panel-heading panel-title">Test</div>
         <div class="panel-body">
-<div class="form_container">
-          <form method='POST' action='/tests'>
-            {{ csrf_field() }}
-            <div class="panel-heading">
-              <button type="submit" class="btn btn-success btn-xs">
-                <span class="fa fa-save"></span>Save
-              </button>
-              <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('tests.index') }}">
-                <span class="fa fa-rotate-left"></span>Cancel
-              </a>
-            </div>
-            <!-- <div class="form_container"> -->
+            <form method='POST' action='/tests'>
+              {{ csrf_field() }}
+              <div class="panel-heading">
+                <button type="submit" class="btn btn-success btn-xs">
+                  <span class="fa fa-save"></span>Save
+                </button>
+                <a class="btn btn-info btn-xs" role="button" href="{{ URL::route('tests.index') }}">
+                  <span class="fa fa-rotate-left"></span>Cancel
+                </a>
+              </div>
+              <div class="form_container">
                 @include('includes.testsFormCore')
+              </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>
   </div>
-</div>
-
-@stop
+  @stop

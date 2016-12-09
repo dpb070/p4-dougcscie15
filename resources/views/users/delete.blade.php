@@ -5,8 +5,15 @@
 @stop
 @section('pageContentSection')
 
-<div class="control_section">
-  <form method="POST" action="/users/{{ $userToDelete->id }}">
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading panel-title">Results</div>
+        <div class="panel-body">
+
+          <div class="panel-heading">
+            <form method="POST" action="/users/{{ $userToDelete->id }}">
     {{ method_field('DELETE') }}
     {{ csrf_field() }}
     <span class="action_msg">
@@ -23,5 +30,11 @@
   </a>
 </form>
 </div>
+
 @include('includes.usersTable')
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 @stop

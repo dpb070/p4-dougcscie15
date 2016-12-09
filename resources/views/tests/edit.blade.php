@@ -24,17 +24,13 @@
               </a>
             </div>
             <div class="form_container">
-              <div class="form-group">
                 <input name="id" value="{{ $test->id }}" type="hidden">
                 @include('includes.testsFormCore')
               </div>
             </form>
           </div>
-
         </div>
       </div>
     </div>
   </div>
-</div>
-
 @stop

@@ -24,25 +24,9 @@
               </a>
             </div>
             <div class="form_container">
-              <div class="form-group">
-                <input name="id" value="{{ $user->id }}" type="hidden">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}">
-              </div>
-              <div class="form-group">
-                <label for="email">Password</label>
-                <input type="text" class="form-control" name="password" value="{{ old('password', $user->password) }}">
-              </div>
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" class="form-control" name="email" value="{{ old('email', $user->email) }}">
-              </div>
-              <div class="form-group">
-                <label for="role">Role</label>
-                <input type="text" class="form-control" name="role" value="{{ old('role', $user->role) }}">
+              @include('includes.usersFormCore')
               </div>
             </form>
-          </div>
         </div>
       </div>
     </div>
