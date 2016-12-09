@@ -13,21 +13,30 @@ class UserController extends Controller
 {
   /* from Route::get('users' ...)*/
   public function index() {
-    $appUser = Auth::user();
-    if (! $appUser) {
-      return redirect('/login');
-    }
-    $users = User::all();
-    return view('users.index')
-        ->with('users',$users)
-        ->with('appUser',$appUser)
-        ->with('tableButtonsEnabled', 'true');
+      $appUser = Auth::user();
+      if (! $appUser) {
+          return redirect('/login');
+      }
+      if ($appUser->role == 'ADMIN') {
+          $users = User::all();
+          return view('users.index')
+            ->with('users',$users)
+            ->with('appUser',$appUser)
+            ->with('tableButtonsEnabled', 'true');
+      }
+      else {
+          $users = User::where('id', $appUser->id);
+          return view('users.index')
+            ->with('users',$users)
+            ->with('appUser',$appUser)
+            ->with('tableButtonsEnabled', 'true');
+      }
   }
 
   /* From Route::get('/users/create' ...) */
   public function create() {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $user = new User();
@@ -39,7 +48,7 @@ class UserController extends Controller
   /* from Route::post('/users' ...)  */
   public function store(Request $request) {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $user = new User();
@@ -57,38 +66,48 @@ class UserController extends Controller
 
   /* from  Route::get('/users/{id}/edit' ...)  */
   public function edit($id) {
-    $appUser = Auth::user();
-    if (! $appUser) {
-      return redirect('/login');
-    }
-    $user = User::find($id);
-    return view('users.edit')
-            ->with('user',$user)
-            ->with('appUser',$appUser);
+      // users may edit certain fields of their own information
+      $appUser = Auth::user();
+      $user = User::find($id);
+      if (
+            ($appUser->id == $user->id) or
+            ($appUser->role == 'ADMIN')
+         ){
+             return view('users.edit')
+             ->with('user',$user)
+             ->with('appUser',$appUser);
+      }
+      else {
+          return redirect('/login');
+      }
   }
 
   /* from  Route::put('/users/{id}' ...)  */
   public function update(Request $request) {
-    $appUser = Auth::user();
-    if (! $appUser) {
-      return redirect('/login');
-    }
-    $user = User::find($request->id);
-    $user->name =  $request->name;
-    $user->email = $request->email;
-    $user->password = $request->password;
-    $user->role = $request->role;
-    $user->remember_token= $request->remember_token;
-    $user->created_at = $request->created_at;
-    $user->updated_at = $request->updated_at;
-    $user->save();
-    return redirect('/users');
+      $appUser = Auth::user();
+      $user = User::find($id);
+      if ( ($appUser->id == $user->id) or
+           ($appUser->role == 'ADMIN') ) {
+          $user = User::find($request->id);
+          $user->name =  $request->name;
+          $user->email = $request->email;
+          $user->password = $request->password;
+          $user->role = $request->role;
+          $user->remember_token= $request->remember_token;
+          $user->created_at = $request->created_at;
+          $user->updated_at = $request->updated_at;
+          $user->save();
+          return redirect('/users');
+      } else
+      {
+          return redirect('/login');
+      }
   }
 
   /* from  Route::get('/users/{id}/delete' ...)  */
   public function delete($id) {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $users = User::all();
@@ -102,7 +121,7 @@ class UserController extends Controller
   /* from Route::delete('/users/{id}' ...) */
   public function destroy($id)    {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $user = User::find($id);
