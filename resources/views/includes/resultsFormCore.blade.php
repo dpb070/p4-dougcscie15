@@ -16,7 +16,13 @@
 </div>
 <div class="form-group">
   <label for="value">Value</label> @include('includes.resultsValueError')
-  <input type="text" class="form-control" id="value" name="value" value="{{ old('value', $result->value) }}" placeholder="test result">
+  <input type="text" class="form-control
+    @if (isset($result->value))
+      @if ($result->value < $result->test->default_low_warning or $result->value > $result->test->default_high_warning)
+         action_msg
+      @endif
+    @endif"
+    id="value" name="value" value="{{ old('value', $result->value) }}" placeholder="test result">
 </div>
 <div class="form-group">
   <label for="result_date">Comments</label>

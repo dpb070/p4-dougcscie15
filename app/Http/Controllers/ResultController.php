@@ -29,11 +29,12 @@ class ResultController extends Controller
     if (! $appUser) {
       return redirect('/login');
     }
-    // $results = Result::where('user_id', $user->id)
+
     $results = Result::with('test')
       ->where('user_id', $appUser->id)
       ->get()
       ->sortByDesc('result_date');
+
     return view('results.index')
       ->with('appUser',$appUser)
       ->with('results',$results)
@@ -47,6 +48,7 @@ class ResultController extends Controller
       return redirect('/login');
     }
     $result = new result();
+    // $result = [];
     $testList = Test::dropDownList();
     return view('results.create')
       ->with('appUser',$appUser)
