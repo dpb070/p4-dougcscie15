@@ -37,6 +37,8 @@ Route::delete('/tests/{id}', 'TestController@destroy')->name('tests.destroy');
 /* Users routes */
 /* Get all */
 Route::get('users', 'UserController@index')->name('users.index');
+/* Get self */
+Route::get('users/self', 'UserController@indexself')->name('users.indexself');
 /* Create new user */
 /* Initialization with form */
 Route::get('/users/create', 'UserController@create')->name('users.create');

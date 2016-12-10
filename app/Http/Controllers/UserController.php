@@ -3,14 +3,34 @@
 namespace P4\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 use DB;
 use Carbon;
 use P4\User;
 use Auth;
 
+
 class UserController extends Controller
 
 {
+  /* from Route::get('users/self' ...) */
+  /* allows edit of own user record */
+  public function indexself() {
+    $appUser = Auth::user();
+    if (! $appUser) {
+      return redirect('/login');
+    }
+    $users = User::where('id',$appUser->id)->get();
+    return view('users.index')
+        ->with('users',$users)
+        ->with('appUser',$appUser)
+        ->with('editButton', True)
+        ->with('deleteButton', False)
+        ->with('newButton', False)
+        ->with('tableButtonsEnabled', 'true');
+  }
+
   /* from Route::get('users' ...)*/
   public function index() {
       $appUser = Auth::user();
@@ -22,14 +42,12 @@ class UserController extends Controller
           return view('users.index')
             ->with('users',$users)
             ->with('appUser',$appUser)
+            ->with('editButton', True)
+            ->with('deleteButton', True)
+            ->with('newButton', True)
             ->with('tableButtonsEnabled', 'true');
-      }
-      else {
-          $users = User::where('id', $appUser->id);
-          return view('users.index')
-            ->with('users',$users)
-            ->with('appUser',$appUser)
-            ->with('tableButtonsEnabled', 'true');
+      } else {
+          return redirect('/login');
       }
   }
 
@@ -85,7 +103,7 @@ class UserController extends Controller
   /* from  Route::put('/users/{id}' ...)  */
   public function update(Request $request) {
       $appUser = Auth::user();
-      $user = User::find($id);
+      $user = User::find($request->id);
       if ( ($appUser->id == $user->id) or
            ($appUser->role == 'ADMIN') ) {
           $user = User::find($request->id);
@@ -97,7 +115,7 @@ class UserController extends Controller
           $user->created_at = $request->created_at;
           $user->updated_at = $request->updated_at;
           $user->save();
-          return redirect('/users');
+          return redirect('users/');
       } else
       {
           return redirect('/login');
@@ -115,6 +133,9 @@ class UserController extends Controller
     return view('users.delete')->with('userToDelete', $userToDelete)
         ->with('users',$users)
         ->with('appUser',$appUser)
+        ->with('editButton', True)
+        ->with('deleteButton', True)
+        ->with('newButton', True)
         ->with('tableButtonsEnabled','false');
   }
 

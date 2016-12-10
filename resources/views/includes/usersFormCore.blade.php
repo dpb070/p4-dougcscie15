@@ -1,4 +1,8 @@
 <div class="form-group">
+  <label for="id">Id</label>
+  <input type="text" class="form-control" name="id" value="{{ old('id', $user->id) }}" >
+</div>
+<div class="form-group">
   <label for="name">Name</label>
   <input type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}" placeholder="user name">
 </div>
