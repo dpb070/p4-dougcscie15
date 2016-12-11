@@ -14,6 +14,7 @@ use DB;
 use Carbon;
 use P4\Result;
 use P4\Test;
+use P4\WarningLimit;
 use Auth;
 
 class ResultController extends Controller
@@ -38,7 +39,8 @@ class ResultController extends Controller
     return view('results.index')
       ->with('appUser',$appUser)
       ->with('results',$results)
-      ->with('tableButtonsEnabled','true');
+      ->with('tableButtonsEnabled','true')
+      ->with('lowWarnLimit',$lowWarnLimit);
   }
 
   /* From Route::get('/results/create' ...) */

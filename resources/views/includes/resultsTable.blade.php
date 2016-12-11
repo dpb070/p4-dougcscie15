@@ -26,7 +26,7 @@
         {{ $result->value }}
       </td>
 
-      <td>{{ $result->comments }}</td>
+      <td>{{ $result->comments }} </td>
       <td>
         <a class="btn btn-danger btn-xs" role="button" onclick="return {{ $tableButtonsEnabled }}" href="/results/{{ $result->id }}/delete">
           <span class="fa fa-minus-circle"></span> Delete
