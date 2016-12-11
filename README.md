@@ -26,8 +26,14 @@ for test results for flagging in the application display
   * as a privileged user
     * chmod -R 777 storage
     * chmod -R 777 bootstrap/cache
-  * Demo Database (MySQL)
+  * Demo Database (MySQL) Creation
     * create database P4
-    * create user p4user identified by p4user
-    * grant all on p4 to p4user
+    * create user p4user identified by 'p4user'
+    * grant all privileges on p4.* to p4user
+  * Demo Database Initialization
+    * from the application directory
+      * php artisan migrate:reset
+      * php artisan migrate
+      * php artisan db:seed
+
     
