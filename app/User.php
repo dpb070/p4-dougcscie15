@@ -33,7 +33,4 @@ class User extends Authenticatable
       return $this->hasMany('P4\Result');
     }
 
-    public function warningLimit() {
-      return $this->hasMany('P4\WarningLimit');
-    }
 }

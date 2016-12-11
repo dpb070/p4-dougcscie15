@@ -74,24 +74,6 @@ Route::get('/results/{id}/delete', 'ResultController@delete')->name('results.des
 /* Delete processing */
 Route::delete('/results/{id}', 'ResultController@destroy')->name('results.destroy');
 /* ========================================================================== */
-/* User Warning Limit routes */
-/* Get all */
-Route::get('warninglimits', 'WarningLimitController@index')->name('warninglimits.index');
-/* Create new userWarnLimit */
-/* Initialization with form */
-Route::get('/warninglimits/create', 'WarningLimitController@create')->name('warninglimits.create');
-/* Create processing */
-Route::post('/warninglimits', 'WarningLimitController@store')->name('warninglimits.store');
-/* Edit existing userWarnLimit */
-/* Initialization with form */
-Route::get('/warninglimits/{id}/edit', 'WarningLimitController@edit')->name('warninglimits.edit');
-/* Edit processing */
-Route::put('/warninglimits/{id}', 'WarningLimitController@update')->name('warninglimits.update');
-/* Delete Result */
-/* Intermediate form to confirm delete */
-Route::get('/warninglimits/{id}/delete', 'WarningLimitController@delete')->name('warninglimits.destroy');
-/* Delete processing */
-Route::delete('/warninglimits/{id}', 'WarningLimitController@destroy')->name('warninglimits.destroy');
 
 /* Added by artisan make:auth */
 Auth::routes();

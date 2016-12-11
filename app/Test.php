@@ -14,9 +14,6 @@ class Test extends Model {
     return $this->hasMany('P4\Result');
   }
 
-  public function warningLimit() {
-    return $this->hasMany('P4\WarningLimit');
-  }
 
   // dropdown list of test ids and names - must be declared static
   public static function dropDownList() {

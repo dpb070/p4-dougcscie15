@@ -16,7 +16,6 @@ information
 tests available for user result logging.  The test definition may include
 validation ranges for result entry as well as default warning limits.
   * Result logging (user) - users may enter results for defined tests
-  * Warning limits (user) - users may enter their individual warning limits
 for test results for flagging in the application display
 * Additional Details
   * Application Installation
@@ -27,7 +26,7 @@ for test results for flagging in the application display
   * as a privileged user
     * chmod -R 777 storage
     * chmod -R 777 bootstrap/cache
-  * Database (MySQL)
+  * Demo Database (MySQL)
     * create database P4
     * create user p4user identified by p4user
     * grant all on p4 to p4user

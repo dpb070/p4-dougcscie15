@@ -39,8 +39,7 @@ class ResultController extends Controller
     return view('results.index')
       ->with('appUser',$appUser)
       ->with('results',$results)
-      ->with('tableButtonsEnabled','true')
-      ->with('lowWarnLimit',$lowWarnLimit);
+      ->with('tableButtonsEnabled','true');
   }
 
   /* From Route::get('/results/create' ...) */
