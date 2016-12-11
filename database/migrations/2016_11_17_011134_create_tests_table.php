@@ -16,7 +16,7 @@ class CreateTestsTable extends Migration
     Schema::create('tests', function (Blueprint $table) {
 
       $table->increments('id');
-
+      $table->softDeletes();
       $table->timestamps();
 
       $table->string('name');

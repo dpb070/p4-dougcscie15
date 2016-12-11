@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon;
 use P4\Test;
+use P4\Result;
 use Auth;
 
 
@@ -32,17 +33,23 @@ class TestController extends Controller
     if (! $appUser) {
       return redirect('/login');
     }
+    $deleteButtonAvailable =($appUser->role == 'ADMIN');
+    $editButtonAvailable =($appUser->role == 'ADMIN');
+    $newButtonAvailable =($appUser->role == 'ADMIN');
     $tests = Test::all();
     return view('tests.index')
       ->with('appUser',$appUser)
       ->with('tests',$tests)
+      ->with('editButton', $editButtonAvailable)
+      ->with('deleteButton', $deleteButtonAvailable)
+      ->with('newButton', $newButtonAvailable)
       ->with('tableButtonsEnabled','true');
   }
 
   /* From Route::get('/tests/create' ...) */
   public function create() {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $test = new Test();
@@ -54,7 +61,7 @@ class TestController extends Controller
   /* from Route::post('/tests' ...)  */
   public function store(Request $request) {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     /* validation - note dynamic modification of high limit/warning */
@@ -85,7 +92,7 @@ class TestController extends Controller
   /* from  Route::get('/tests/{id}/edit' ...)  */
   public function edit($id) {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $test = Test::find($id);
@@ -97,7 +104,7 @@ class TestController extends Controller
   /* from  Route::put('/tests/{id}' ...)  */
   public function update(Request $request) {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $this->validate($request,
@@ -124,25 +131,34 @@ class TestController extends Controller
   /* from  Route::get('/tests/{id}/delete' ...)  */
   public function delete($id) {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
     $tests = Test::all();
     $testToDelete = Test::find($id);
+    $deleteButtonAvailable =($appUser->role == 'ADMIN');
+    $editButtonAvailable =($appUser->role == 'ADMIN');
+    $newButtonAvailable =($appUser->role == 'ADMIN');
     return view('tests.delete')
       ->with('testToDelete', $testToDelete)
       ->with('tests',$tests)
       ->with('tableButtonsEnabled','false')
+      ->with('editButton', $editButtonAvailable)
+      ->with('deleteButton', $deleteButtonAvailable)
+      ->with('newButton', $newButtonAvailable)
       ->with('appUser',$appUser);
   }
 
   /* from Route::delete('/tests/{id}' ...) */
+  /* delete (soft) associated results and then test */
   public function destroy($id)
   {
     $appUser = Auth::user();
-    if (! $appUser) {
+    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
+    $results = Result::where('test_id', $id);
+    $results->delete();
     $test = Test::find($id);
     $test->delete();
     return redirect('/tests');

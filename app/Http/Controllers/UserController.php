@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use DB;
 use Carbon;
 use P4\User;
+use P4\Result;
 use Auth;
 
 
@@ -140,11 +141,14 @@ class UserController extends Controller
   }
 
   /* from Route::delete('/users/{id}' ...) */
+  /* delete (soft) associated results and then user */
   public function destroy($id)    {
     $appUser = Auth::user();
     if ((! $appUser) or ($appUser->role !== 'ADMIN')){
       return redirect('/login');
     }
+    $results = Result::where('user_id', $id);
+    $results->delete();
     $user = User::find($id);
     $user->delete();
     return redirect('/users');

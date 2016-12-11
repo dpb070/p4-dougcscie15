@@ -20,6 +20,7 @@
       Delete
       <span class="imark">
       "{{ $userToDelete->name }}"
+      and associated results?
     </span>
   </span>
   <button type="submit" class="btn btn-info btn-xs">

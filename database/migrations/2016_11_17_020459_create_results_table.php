@@ -16,7 +16,7 @@ class CreateResultsTable extends Migration
     Schema::create('results', function (Blueprint $table) {
 
       $table->increments('id');
-
+      $table->softDeletes();
       $table->timestamps();
 
       $table->date('result_date');

@@ -3,8 +3,12 @@
 namespace P4;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Test extends Model {
+
+  use SoftDeletes;
+  protected $dates = ['deleted_at'];
 
   public function results() {
     return $this->hasMany('P4\Result');
