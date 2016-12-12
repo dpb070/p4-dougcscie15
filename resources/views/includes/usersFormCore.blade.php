@@ -14,7 +14,15 @@
   <label for="email">Email</label>
   <input type="text" class="form-control" name="email"  value="{{ old('email', $user->email) }}"placeholder="email address">
 </div>
-<div class="form-group">
+<!-- <div class="form-group">
   <label for="role">Role</label>
   <input type="text" class="form-control" name="role"  value="{{ old('role', $user->role) }}" placeholder="role">
+</div> -->
+
+<div class="form-group">
+    <label for="role">Role</label>
+    <select id="role" >
+        <option value="{{ old('role', $user->role) }}" {{ ( old('role', $user->role)  == 'ADMIN') ? "SELECTED" : '' }}>ADMIN</option>
+        <option value="{{ old('role', $user->role) }}" {{ ( old('role', $user->role)  == 'USER') ? "SELECTED" : '' }}>USER</option>
+    </select>
 </div>
