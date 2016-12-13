@@ -39,11 +39,6 @@ Route::delete('/tests/{id}', 'TestController@destroy')->name('tests.destroy');
 Route::get('users', 'UserController@index')->name('users.index');
 /* Get self */
 Route::get('users/self', 'UserController@indexself')->name('users.indexself');
-/* Create new user */
-/* Initialization with form */
-Route::get('/users/create', 'UserController@create')->name('users.create');
-/* Create processing */
-Route::post('/users', 'UserController@store')->name('users.store');
 /* Edit existing user */
 /* Initialization with form */
 Route::get('/users/{id}/edit', 'UserController@edit')->name('users.edit');

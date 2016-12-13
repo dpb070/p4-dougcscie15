@@ -1,17 +1,18 @@
 
 <div class="form-group">
   <label for="name">Name</label>
-  <input type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}" placeholder="user name">
+  <input type="text" class="form-control" id="name name="name" value="{{ old('name', $user->name) }}">
 </div>
 <div class="form-group">
   <label for="password">Password</label>
-  <input type="text" class="form-control" name="password"  value="{{ old('password', $user->password) }}" placeholder="password (restrictions)">
+  <input type="password" class="form-control" id="password" name="password"  value="{{ old('password', $user->password) }}">
 </div>
 <div class="form-group">
   <label for="email">Email</label>
-  <input type="text" class="form-control" name="email"  value="{{ old('email', $user->email) }}"placeholder="email address">
+  <input type="text" class="form-control" id="email" name="email"  value="{{ old('email', $user->email) }}">
 </div>
 
+@if ($appUser->role == 'ADMIN')
 <div class="form-group">
     <label for="role">Role</label>
     <select id="role" name="role">
@@ -24,3 +25,4 @@
         @endif
     </select>
 </div>
+@endif
