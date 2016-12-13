@@ -95,6 +95,7 @@ class UserController extends Controller
           $user = User::find($request->id);
           $user->name =  $request->name;
           $user->email = $request->email;
+          // encrypt password if changed
           if ($request->password !== $request->originalPassword) {
             $user->password = bcrypt($request->password);
           } else {

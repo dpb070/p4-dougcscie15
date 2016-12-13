@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@include('includes.loginNavbar')
+@include('includes.registerNavbar')
 @section('pageContentSection')
 <div class="container">
     <div class="row">

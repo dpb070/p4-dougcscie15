@@ -1,5 +1,10 @@
 <?php
-
+/**
+* Doug Bradley
+* CSCIE-15 Project 4
+* Test - an analysis
+* Soft deletes implemented
+*/
 namespace P4;
 
 use Illuminate\Database\Eloquent\Model;

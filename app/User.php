@@ -1,5 +1,10 @@
 <?php
-
+/**
+* Doug Bradley
+* CSCIE-15 Project 4
+* User - mostly based on out-of-box Laravel model
+* Soft deletes implemented
+*/
 namespace P4;
 
 use Illuminate\Notifications\Notifiable;
