@@ -1,16 +1,18 @@
 
 <div class="form-group">
-  <label for="name">Name</label>
-  <input type="text" class="form-control" id="name name="name" value="{{ old('name', $user->name) }}">
+  <label for="name">Name</label> @include('includes.usersNameError')
+  <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $user->name) }}">
 </div>
 <div class="form-group">
-  <label for="password">Password</label>
+  <label for="password">Password</label> @include('includes.usersPasswordError')
   <input type="password" class="form-control" id="password" name="password"  value="{{ old('password', $user->password) }}">
 </div>
 <div class="form-group">
-  <label for="email">Email</label>
+  <label for="email">Email</label> @include('includes.usersEmailError')
   <input type="text" class="form-control" id="email" name="email"  value="{{ old('email', $user->email) }}">
 </div>
+
+<input type="text" class="form-control" id="originalPassword" name="originalPassword" value="{{ $user->password }}">
 
 @if ($appUser->role == 'ADMIN')
 <div class="form-group">

@@ -1,5 +1,11 @@
 <?php
-
+/**
+* Doug Bradley
+* CSCIE-15 Project 4
+* controller functions for USERS model/table processing
+* logged in non-ADMIN user can change name, password, and email
+* if user not logged in, functions will return path to login page
+*/
 namespace P4\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -15,6 +21,12 @@ use Auth;
 class UserController extends Controller
 
 {
+
+  //field validation
+  private $nameRule = 'required';
+  private $emailRule = 'required|email|max:255|unique:users,email,'; //id added dynamically
+  private $passwordRule = 'required|min:6';
+
   /* from Route::get('users/self' ...) */
   /* allows edit of own user record */
   public function indexself() {
@@ -28,7 +40,6 @@ class UserController extends Controller
         ->with('appUser',$appUser)
         ->with('editButton', True)
         ->with('deleteButton', False)
-        ->with('newButton', False)
         ->with('tableButtonsEnabled', 'true');
   }
 
@@ -45,42 +56,10 @@ class UserController extends Controller
             ->with('appUser',$appUser)
             ->with('editButton', True)
             ->with('deleteButton', True)
-            ->with('newButton', True)
             ->with('tableButtonsEnabled', 'true');
       } else {
           return redirect('/login');
       }
-  }
-
-  /* From Route::get('/users/create' ...) */
-  public function create() {
-    $appUser = Auth::user();
-    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
-      return redirect('/login');
-    }
-    $user = new User();
-    return view('users.create')
-    ->with('appUser',$appUser)
-    ->with('user',$user);
-  }
-
-  /* from Route::post('/users' ...)  */
-  public function store(Request $request) {
-    $appUser = Auth::user();
-    if ((! $appUser) or ($appUser->role !== 'ADMIN')){
-      return redirect('/login');
-    }
-    $user = new User();
-    $user->name =  $request->name;
-    $user->email = $request->email;
-    $user->password = $request->password;
-    $user->role = $request->role;
-    $user->remember_token= $request->remember_token;
-    $user->created_at = $request->created_at;
-    $user->updated_at = $request->updated_at;
-    $user->save();
-    return redirect('/users');
-
   }
 
   /* from  Route::get('/users/{id}/edit' ...)  */
@@ -104,13 +83,23 @@ class UserController extends Controller
   /* from  Route::put('/users/{id}' ...)  */
   public function update(Request $request) {
       $appUser = Auth::user();
+      $this->validate($request,
+                      ['name' => $this->nameRule,
+                       'email' => $this->emailRule.$request->id,
+                       'password' => $this->passwordRule
+                      ]
+                      );
       $user = User::find($request->id);
       if ( ($appUser->id == $user->id) or
            ($appUser->role == 'ADMIN') ) {
           $user = User::find($request->id);
           $user->name =  $request->name;
           $user->email = $request->email;
-          $user->password = $request->password;
+          if ($request->password !== $request->originalPassword) {
+            $user->password = bcrypt($request->password);
+          } else {
+            $user->password = $request->password;
+          }
           $user->role = $request->role;
           $user->remember_token= $request->remember_token;
           $user->created_at = $request->created_at;

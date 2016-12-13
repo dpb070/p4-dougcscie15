@@ -12,12 +12,13 @@
         <div class="panel-heading panel-title">Tests</div>
         <div class="panel-body">
 
+          @if ($newButton)
           <div class="panel-heading">
             <a class="btn btn-success btn-xs" role="button" href="{{ URL::route('tests.create') }}">
               <span class="fa fa-plus-circle"></span> New
             </a>
           </div>
-
+          @endif
           @include('includes.testsTable')
         </div>
       </div>
