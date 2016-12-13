@@ -12,7 +12,8 @@
   <input type="text" class="form-control" id="email" name="email"  value="{{ old('email', $user->email) }}">
 </div>
 
-<input type="text" class="form-control" id="originalPassword" name="originalPassword" value="{{ $user->password }}">
+<!-- to persist encrypted password info to determine change -->
+<input type="hidden" class="form-control" id="originalPassword" name="originalPassword" value="{{ $user->password }}">
 
 @if ($appUser->role == 'ADMIN')
 <div class="form-group">
