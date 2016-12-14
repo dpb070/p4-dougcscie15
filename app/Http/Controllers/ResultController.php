@@ -91,6 +91,9 @@ class ResultController extends Controller
       return redirect('/login');
     }
     $result = Result::find($id);
+    if ($appUser->id !== $result->user_id) {
+      return redirect('/login');
+    }
     $testList = Test::dropDownList();
     return view('results.edit')
       ->with('result',$result)
@@ -135,6 +138,9 @@ class ResultController extends Controller
       ->get()
       ->sortByDesc('result_date');
     $resultToDelete = Result::find($id);
+    if ($appUser->id !== $resultToDelete->user_id) {
+      return redirect('/login');
+    }
     return view('results.delete')
       ->with('resultToDelete', $resultToDelete)
       ->with('results',$results)
