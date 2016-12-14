@@ -76,17 +76,6 @@ class TestsTableSeeder extends Seeder
       'default_low_warning' => null,
       'default_high_warning' => 100,
       'comments' => 'Measured upon awakening or after fasting'
-    ]);
-    DB::table('tests')->insert([
-      'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-      'name' => 'Heart Rate',
-      'units' => '/min',
-      'validation_low_limit' => 20,
-      'validation_high_limit' => 300,
-      'default_low_warning' => null,
-      'default_high_warning' => 100,
-      'comments' => 'Measured at rest'
     ]);      
   }
 }
