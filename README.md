@@ -19,7 +19,7 @@ features/components are:
   * Application Installation
   * clone from github
   * change to application directory
-  * copy .env.sample to .env
+  * copy .env.sample to .env and modify parameters as desired
   * composer install
   * as a privileged user
     * chmod -R 777 storage
